@@ -1,0 +1,51 @@
+images = []
+
+count = 9
+
+for i in range(0,count):
+
+    picture = pickAFile()
+
+    images.append(makePicture(picture))
+
+width = getWidth(images[0])
+
+heigth = getHeight(images[0])
+
+newImage = makeEmptyPicture(width, heigth)
+
+for x in range(0,width):
+
+    for y in range(0,heigth):
+
+        reds = []
+
+        greens = []
+
+        blues = []
+
+        for k in range(0,count):
+
+            pixel = getPixel(images[k], x, y)
+
+            reds.append(getRed(pixel))
+
+            greens.append(getGreen(pixel))
+
+            blues.append(getBlue(pixel))
+            
+        reds.sort()
+
+        greens.sort()
+
+        blues.sort()
+
+        newRed = reds[4]
+
+        newGreen = greens[4]
+
+        newBlue = blues[4]
+
+        setColor(getPixel(newImage, x, y), makeColor(newRed, newGreen, newBlue))
+    
+show(newImage)
